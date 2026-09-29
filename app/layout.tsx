@@ -18,7 +18,7 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Dear You Counseling | Sara Antoine, Licensed Social Worker',
+    default: 'Dear You Counseling | Sara Antoine, RCSWI',
     template: '%s | Dear You Counseling',
   },
   description:

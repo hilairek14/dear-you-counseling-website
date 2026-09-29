@@ -18,7 +18,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
         <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col items-start justify-center px-6 pt-32 pb-20">
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-primary">
-            Sara Antoine, Licensed Social Worker
+            Sara Antoine, RCSWI
           </p>
           <h1 className="mt-5 max-w-3xl font-serif text-5xl font-medium leading-[1.05] text-balance md:text-7xl">
             A gentle place to come back to yourself.
