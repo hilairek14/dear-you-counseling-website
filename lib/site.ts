@@ -3,6 +3,7 @@ export const site = {
   therapist: 'Sara Antoine',
   credential: 'Licensed Social Worker',
   tagline: 'Culturally sensitive, faith-informed therapy for teens, young adults, and adults.',
+  psychologyTodayUrl: 'https://www.psychologytoday.com/us/therapists/sara-antoine-wesley-chapel-fl/1562065',
 }
 
 export const navLinks = [

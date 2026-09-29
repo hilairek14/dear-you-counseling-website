@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { Award, GraduationCap, HeartHandshake } from 'lucide-react'
+import { Award, BadgeCheck, ExternalLink, GraduationCap, HeartHandshake } from 'lucide-react'
 import { GlassLink } from '@/components/glass-button'
 import { PageIntro } from '@/components/page-intro'
+import { site } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'About Sara Antoine',
@@ -90,6 +91,17 @@ export default function AboutPage() {
                   </li>
                 ))}
               </ul>
+              <a
+                href={site.psychologyTodayUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-btn mt-6"
+              >
+                <BadgeCheck className="size-4" aria-hidden />
+                View my Psychology Today profile
+                <ExternalLink className="size-4" aria-hidden />
+                <span className="sr-only">(opens in a new tab)</span>
+              </a>
             </div>
 
             <div className="rounded-3xl bg-secondary/60 p-8">
