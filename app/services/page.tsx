@@ -95,7 +95,6 @@ export default function ServicesPage() {
           <GlassLink href="/contact" variant="tinted">
             Get in touch
           </GlassLink>
-          <GlassLink href="/pricing">See pricing</GlassLink>
         </div>
       </section>
     </>
