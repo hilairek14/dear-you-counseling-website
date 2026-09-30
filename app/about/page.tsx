@@ -1,20 +1,21 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { Award, GraduationCap, HeartHandshake } from 'lucide-react'
+import { Award, BadgeCheck, ExternalLink, GraduationCap, HeartHandshake } from 'lucide-react'
 import { GlassLink } from '@/components/glass-button'
 import { PageIntro } from '@/components/page-intro'
+import { site } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'About Sara Antoine',
   description:
-    'Meet Sara Antoine, Licensed Social Worker. Educated at the University of South Florida and Florida Atlantic University.',
+    'Meet Sara Antoine, a pre-licensed Registered Clinical Social Work Intern (RCSWI). Educated at the University of South Florida and Florida Atlantic University.',
 }
 
 const credentials = [
   {
     icon: Award,
-    title: 'Licensed Social Worker',
-    detail: 'State of Florida',
+    title: 'Registered Clinical Social Work Intern (RCSWI)',
+    detail: 'Pre-licensed, State of Florida',
   },
   {
     icon: GraduationCap,
@@ -41,7 +42,7 @@ export default function AboutPage() {
       <PageIntro
         eyebrow="About"
         title="Hi, I'm Sara Antoine."
-        description="I am a Licensed Social Worker and the founder of Dear You Counseling, a practice built on the belief that every person deserves to feel seen, understood, and cared for."
+        description="I am a pre-licensed Registered Clinical Social Work Intern (RCSWI) and the founder of Dear You Counseling, a practice built on the belief that every person deserves to feel seen, understood, and cared for."
       />
 
       <section className="mx-auto max-w-6xl px-6">
@@ -90,6 +91,17 @@ export default function AboutPage() {
                   </li>
                 ))}
               </ul>
+              <a
+                href={site.psychologyTodayUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-btn mt-6"
+              >
+                <BadgeCheck className="size-4" aria-hidden />
+                View my Psychology Today profile
+                <ExternalLink className="size-4" aria-hidden />
+                <span className="sr-only">(opens in a new tab)</span>
+              </a>
             </div>
 
             <div className="rounded-3xl bg-secondary/60 p-8">
