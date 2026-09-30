@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Award, BadgeCheck, ExternalLink, GraduationCap, HeartHandshake } from 'lucide-react'
+import { FloridaBadge, UniversityBadge } from '@/components/credential-badges'
 import { GlassLink } from '@/components/glass-button'
 import { PageIntro } from '@/components/page-intro'
 import { site } from '@/lib/site'
@@ -16,16 +17,19 @@ const credentials = [
     icon: Award,
     title: 'Registered Clinical Social Work Intern (RCSWI)',
     detail: 'Pre-licensed, State of Florida',
+    badge: <FloridaBadge />,
   },
   {
     icon: GraduationCap,
     title: "Master's Degree",
     detail: 'University of South Florida',
+    badge: <UniversityBadge initials="USF" />,
   },
   {
     icon: GraduationCap,
     title: 'Bachelor of Social Work',
     detail: 'Florida Atlantic University',
+    badge: <UniversityBadge initials="FAU" />,
   },
 ]
 
@@ -60,9 +64,9 @@ export default function AboutPage() {
           <div className="flex flex-col gap-10 md:w-7/12">
             <div className="flex flex-col gap-5 text-lg leading-relaxed text-muted-foreground">
               <p>
-                My practice focuses on culturally sensitive, faith-informed therapy for teens, young adults, and
-                adults. I know that our cultures, families, and beliefs shape the way we experience the world,
-                and I bring that understanding into every session.
+                My practice focuses on culturally sensitive, faith-informed therapy for adults. I know that our
+                cultures, families, and beliefs shape the way we experience the world, and I bring that
+                understanding into every session.
               </p>
               <p>
                 I specialize in anxiety, depression, trauma, life transitions, and relationship challenges. My
@@ -79,14 +83,17 @@ export default function AboutPage() {
             <div>
               <h2 className="font-serif text-3xl font-medium">Education & Credentials</h2>
               <ul className="mt-6 flex flex-col gap-4">
-                {credentials.map(({ icon: Icon, title, detail }) => (
+                {credentials.map(({ icon: Icon, title, detail, badge }) => (
                   <li key={title} className="glass-panel flex items-center gap-5 rounded-3xl p-5">
                     <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
                       <Icon className="size-5" aria-hidden />
                     </span>
-                    <div>
-                      <p className="font-medium text-foreground">{title}</p>
-                      <p className="text-sm text-muted-foreground">{detail}</p>
+                    <div className="flex flex-1 items-center justify-between gap-3">
+                      <div>
+                        <p className="font-medium text-foreground">{title}</p>
+                        <p className="text-sm text-muted-foreground">{detail}</p>
+                      </div>
+                      <span className="shrink-0 text-primary">{badge}</span>
                     </div>
                   </li>
                 ))}

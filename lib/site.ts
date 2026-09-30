@@ -2,7 +2,7 @@ export const site = {
   name: 'Dear You Counseling',
   therapist: 'Sara Antoine',
   credential: 'Registered Clinical Social Work Intern (RCSWI)',
-  tagline: 'Culturally sensitive, faith-informed therapy for teens, young adults, and adults.',
+  tagline: 'Culturally sensitive, faith-informed therapy for adults.',
   psychologyTodayUrl: 'https://www.psychologytoday.com/us/therapists/sara-antoine-wesley-chapel-fl/1562065',
 }
 
@@ -16,26 +16,31 @@ export const navLinks = [
 
 export const specialties = [
   {
+    slug: 'anxiety',
     title: 'Anxiety',
     description:
       'Quiet the racing thoughts and constant worry. Together we build practical tools to help you feel grounded and more at ease in your everyday life.',
   },
   {
+    slug: 'depression',
     title: 'Depression',
     description:
       'When everything feels heavy, you do not have to carry it alone. We gently work toward renewed energy, hope, and a sense of meaning.',
   },
   {
+    slug: 'trauma',
     title: 'Trauma',
     description:
       'Healing happens at your pace. With trauma-informed care, we create a safe space to process painful experiences and restore a sense of safety.',
   },
   {
+    slug: 'life-transitions',
     title: 'Life Transitions',
     description:
       'College, new careers, relocation, loss, or becoming a parent. Navigate seasons of change with clarity, resilience, and support.',
   },
   {
+    slug: 'relationship-challenges',
     title: 'Relationship Challenges',
     description:
       'Explore patterns in family, friendships, and romantic relationships so you can communicate openly, set healthy boundaries, and connect more deeply.',
@@ -44,18 +49,21 @@ export const specialties = [
 
 export const approaches = [
   {
+    slug: 'cbt',
     title: 'Cognitive Behavioral Therapy',
     short: 'CBT',
     description:
       'Identify and reshape unhelpful thought patterns and behaviors, giving you concrete skills you can use long after our sessions end.',
   },
   {
+    slug: 'strengths-based',
     title: 'Strengths-Based Therapy',
     short: 'Strengths',
     description:
       'Rather than focusing only on what feels broken, we uncover and build on the resilience, gifts, and wisdom you already carry.',
   },
   {
+    slug: 'trauma-informed',
     title: 'Trauma-Informed Care',
     short: 'Trauma-Informed',
     description:
@@ -65,19 +73,9 @@ export const approaches = [
 
 export const populations = [
   {
-    title: 'Teens',
+    title: 'Adults of All Ages',
     description:
-      'A supportive space for adolescents navigating school stress, identity, family dynamics, and big emotions.',
-  },
-  {
-    title: 'Young Adults',
-    description:
-      'Guidance through the milestones of early adulthood, from independence and career choices to relationships and self-discovery.',
-  },
-  {
-    title: 'Adults',
-    description:
-      'Care for the demands of work, family, faith, and personal growth, wherever you are in your journey.',
+      'Support across every stage of adulthood, from the milestones of early independence, career choices, and self-discovery to the demands of work, family, faith, and personal growth, wherever you are in your journey.',
   },
 ]
 

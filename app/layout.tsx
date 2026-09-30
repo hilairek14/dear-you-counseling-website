@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: '%s | Dear You Counseling',
   },
   description:
-    'Culturally sensitive, faith-informed therapy for teens, young adults, and adults. Specializing in anxiety, depression, trauma, life transitions, and relationship challenges.',
+    'Culturally sensitive, faith-informed therapy for adults. Specializing in anxiety, depression, trauma, life transitions, and relationship challenges.',
   icons: {
     icon: [
       { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },

@@ -22,9 +22,9 @@ export default function ServicesPage() {
         <h2 id="who-heading" className="font-serif text-3xl font-medium md:text-4xl">
           Who I work with
         </h2>
-        <ul className="mt-8 grid gap-5 md:grid-cols-3">
+        <ul className="mt-8 flex flex-col gap-5">
           {populations.map((item) => (
-            <li key={item.title} className="glass-panel rounded-3xl p-7">
+            <li key={item.title} className="glass-panel max-w-2xl rounded-3xl p-7">
               <h3 className="font-serif text-2xl font-medium">{item.title}</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">{item.description}</p>
             </li>
@@ -38,7 +38,11 @@ export default function ServicesPage() {
         </h2>
         <ul className="mt-8 flex flex-col divide-y divide-border border-y border-border">
           {specialties.map((item) => (
-            <li key={item.title} className="flex flex-col gap-2 py-7 md:flex-row md:gap-12">
+            <li
+              key={item.title}
+              id={item.slug}
+              className="flex scroll-mt-28 flex-col gap-2 py-7 md:flex-row md:gap-12"
+            >
               <h3 className="font-serif text-2xl font-medium md:w-80">{item.title}</h3>
               <p className="flex-1 leading-relaxed text-muted-foreground">{item.description}</p>
             </li>
@@ -53,7 +57,11 @@ export default function ServicesPage() {
           </h2>
           <ul className="mt-8 grid gap-5 md:grid-cols-3">
             {approaches.map((item) => (
-              <li key={item.title} className="glass-panel flex flex-col rounded-3xl p-7">
+              <li
+                key={item.title}
+                id={item.slug}
+                className="glass-panel flex scroll-mt-28 flex-col rounded-3xl p-7"
+              >
                 <span className="self-start rounded-full bg-accent px-3 py-1 text-xs font-medium text-accent-foreground">
                   {item.short}
                 </span>

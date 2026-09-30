@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { GlassLink } from '@/components/glass-button'
 import { approaches, specialties } from '@/lib/site'
@@ -8,7 +9,7 @@ export default function HomePage() {
     <>
       <section className="relative -mt-20 overflow-hidden">
         <Image
-          src="/images/hero.png"
+          src="/images/hero-meadow.jpg"
           alt=""
           fill
           priority
@@ -24,8 +25,7 @@ export default function HomePage() {
             A gentle place to come back to yourself.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/80 text-pretty">
-            Culturally sensitive, faith-informed therapy for teens, young adults, and adults, tailored to your
-            unique pace and needs.
+            Culturally sensitive, faith-informed therapy for adults, tailored to your unique pace and needs.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <GlassLink href="/contact" variant="tinted">
@@ -75,9 +75,17 @@ export default function HomePage() {
           </div>
           <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {specialties.map((item) => (
-              <li key={item.title} className="glass-panel rounded-3xl p-7">
-                <h3 className="font-serif text-2xl font-medium">{item.title}</h3>
-                <p className="mt-3 leading-relaxed text-muted-foreground">{item.description}</p>
+              <li key={item.title}>
+                <Link
+                  href={`/services#${item.slug}`}
+                  className="glass-panel group flex items-center justify-between gap-3 rounded-3xl p-7 transition-transform hover:-translate-y-0.5"
+                >
+                  <h3 className="font-serif text-2xl font-medium">{item.title}</h3>
+                  <ArrowRight
+                    className="size-5 shrink-0 text-primary transition-transform group-hover:translate-x-1"
+                    aria-hidden
+                  />
+                </Link>
               </li>
             ))}
             <li className="flex flex-col justify-between rounded-3xl bg-primary p-7 text-primary-foreground">
@@ -103,10 +111,18 @@ export default function HomePage() {
         </div>
         <ol className="mt-12 flex flex-col divide-y divide-border border-y border-border">
           {approaches.map((item, index) => (
-            <li key={item.title} className="flex flex-col gap-3 py-8 md:flex-row md:gap-12">
-              <span className="font-serif text-2xl text-primary md:w-16">{`0${index + 1}`}</span>
-              <h3 className="font-serif text-2xl font-medium md:w-80">{item.title}</h3>
-              <p className="flex-1 leading-relaxed text-muted-foreground">{item.description}</p>
+            <li key={item.title}>
+              <Link
+                href={`/services#${item.slug}`}
+                className="group flex items-center gap-3 py-8 transition-colors hover:text-primary md:gap-12"
+              >
+                <span className="font-serif text-2xl text-primary md:w-16">{`0${index + 1}`}</span>
+                <h3 className="flex-1 font-serif text-2xl font-medium">{item.title}</h3>
+                <ArrowRight
+                  className="size-5 shrink-0 text-primary transition-transform group-hover:translate-x-1"
+                  aria-hidden
+                />
+              </Link>
             </li>
           ))}
         </ol>
@@ -123,12 +139,9 @@ export default function HomePage() {
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-primary-foreground/90">
               Send a message to schedule your free 15-minute consultation.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <div className="mt-8 flex justify-center">
               <GlassLink href="/contact" className="text-foreground">
                 Send a message
-              </GlassLink>
-              <GlassLink href="/pricing" variant="tinted">
-                View pricing
               </GlassLink>
             </div>
           </div>

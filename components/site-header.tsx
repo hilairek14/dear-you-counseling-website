@@ -14,7 +14,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 px-4 pt-4">
-      <div className="glass-panel mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3">
+      <div className="glass-panel mx-auto flex w-fit max-w-full items-center gap-6 rounded-full px-5 py-3">
         <Link href="/" className="flex items-baseline gap-2" onClick={() => setOpen(false)}>
           <span className="font-serif text-2xl font-semibold tracking-tight text-foreground">
             Dear You
