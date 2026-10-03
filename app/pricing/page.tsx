@@ -1,23 +1,30 @@
-import type { Metadata } from 'next'
-import { Check, ShieldCheck } from 'lucide-react'
+import { Check, ShieldCheck, Video } from 'lucide-react'
 import { GlassLink } from '@/components/glass-button'
 import { PageIntro } from '@/components/page-intro'
+import { pageMetadata } from '@/lib/seo'
 import { insurances, sessionRates } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
-export const metadata: Metadata = {
-  title: 'Pricing & Insurance',
-  description: 'Session rates and accepted insurance plans at Dear You Counseling.',
-}
+export const metadata = pageMetadata({
+  title: 'Therapy Rates & Insurance in Florida | Dear You Counseling',
+  description:
+    'Session rates, accepted insurance plans, and self-pay options for online therapy with Dear You Counseling in Florida.',
+  path: '/pricing',
+})
 
 export default function PricingPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Pricing"
+        eyebrow="Rates & Insurance"
         title="Rates & insurance"
         description="Clear, upfront pricing so you can focus on what matters most: your wellbeing."
       />
+
+      <p className="mx-auto -mt-4 mb-12 flex max-w-fit items-center gap-3 rounded-full bg-secondary/70 px-5 py-3 text-sm text-foreground/85">
+        <Video className="size-4 shrink-0 text-primary" aria-hidden />
+        All sessions are offered through secure telehealth for clients located in Florida.
+      </p>
 
       <section className="mx-auto max-w-6xl px-6" aria-labelledby="rates-heading">
         <h2 id="rates-heading" className="sr-only">
@@ -101,6 +108,19 @@ export default function PricingPage() {
             Under the No Surprises Act, if you are uninsured or not using insurance, you have the right to
             receive a Good Faith Estimate of expected charges. Please ask for one at any time.
           </p>
+        </div>
+      </section>
+
+      <section className="mx-auto mt-20 flex max-w-3xl flex-col items-center px-6 text-center">
+        <h2 className="font-serif text-4xl font-medium text-balance">Have a question about cost?</h2>
+        <p className="mt-4 text-lg text-muted-foreground">
+          Reach out anytime, or start with a free 15-minute consultation.
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <GlassLink href="/contact" variant="tinted">
+            Book a free consultation
+          </GlassLink>
+          <GlassLink href="/services">Explore services</GlassLink>
         </div>
       </section>
     </>

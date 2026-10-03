@@ -5,7 +5,7 @@ import { randomUUID } from 'node:crypto'
 export type ContactState = {
   status: 'idle' | 'success' | 'error'
   message?: string
-  fieldErrors?: Partial<Record<'name' | 'email' | 'message', string>>
+  fieldErrors?: Partial<Record<'name' | 'email' | 'message' | 'location', string>>
 }
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -34,6 +34,9 @@ export async function sendContactMessage(_prev: ContactState, formData: FormData
   if (!name) fieldErrors.name = 'Please share your name.'
   if (!EMAIL_PATTERN.test(email)) fieldErrors.email = 'Please enter a valid email address.'
   if (message.length < 10) fieldErrors.message = 'Please write a short message (at least 10 characters).'
+  if (formData.get('inFlorida') !== 'on') {
+    fieldErrors.location = 'Please confirm you will be located in Florida during sessions.'
+  }
   if (Object.keys(fieldErrors).length > 0) {
     return { status: 'error', message: 'Please review the highlighted fields.', fieldErrors }
   }
@@ -53,6 +56,7 @@ export async function sendContactMessage(_prev: ContactState, formData: FormData
     ['Email', email],
     ['Phone', phone || 'Not provided'],
     ['Reason', topic || 'Not specified'],
+    ['Located in Florida', 'Confirmed'],
   ]
   const html = `
     <h2>New message from the Dear You Counseling website</h2>

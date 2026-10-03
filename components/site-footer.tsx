@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { navLinks, site } from '@/lib/site'
+import { specialtyPages } from '@/lib/specialty-pages'
 
 export function SiteFooter() {
   return (
@@ -10,19 +11,36 @@ export function SiteFooter() {
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             {site.therapist}, {site.credential}. {site.tagline}
           </p>
+          <p className="mt-3 text-sm leading-relaxed text-foreground/85">{site.serviceArea}</p>
+          <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{site.supervisionNote}</p>
         </div>
 
-        <nav aria-label="Footer">
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="text-muted-foreground hover:text-foreground">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="flex flex-col gap-8 sm:flex-row sm:gap-16">
+          <nav aria-label="Footer">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-primary">Explore</p>
+            <ul className="mt-4 flex flex-col gap-2 text-sm">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-muted-foreground hover:text-foreground">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <nav aria-label="Specialties">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-primary">Online therapy</p>
+            <ul className="mt-4 flex flex-col gap-2 text-sm">
+              {specialtyPages.map((page) => (
+                <li key={page.slug}>
+                  <Link href={`/${page.slug}`} className="text-muted-foreground hover:text-foreground">
+                    {page.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </div>
 
       <div className="border-t border-border">

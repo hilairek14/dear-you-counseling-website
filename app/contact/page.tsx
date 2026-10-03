@@ -1,12 +1,15 @@
-import type { Metadata } from 'next'
 import { Clock, HeartPulse, MessageCircle } from 'lucide-react'
 import { ContactForm } from '@/components/contact-form'
 import { PageIntro } from '@/components/page-intro'
+import { pageMetadata } from '@/lib/seo'
+import { site } from '@/lib/site'
 
-export const metadata: Metadata = {
-  title: 'Contact',
-  description: 'Send a message to Sara Antoine at Dear You Counseling to schedule a free consultation.',
-}
+export const metadata = pageMetadata({
+  title: 'Book a Free Consultation | Dear You Counseling',
+  description:
+    'Schedule a free 15-minute consultation for secure online therapy with Sara Antoine. Serving clients located in Florida.',
+  path: '/contact',
+})
 
 const details = [
   {
@@ -37,6 +40,9 @@ export default function ContactPage() {
 
       <section className="mx-auto flex max-w-6xl flex-col gap-10 px-6 lg:flex-row">
         <div className="glass-panel rounded-[2rem] p-6 md:p-10 lg:w-7/12">
+          <p className="mb-6 rounded-2xl bg-secondary/60 px-5 py-4 text-sm leading-relaxed text-foreground/85">
+            {site.telehealthNote}
+          </p>
           <ContactForm />
         </div>
 

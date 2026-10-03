@@ -30,7 +30,7 @@ export function ContactForm() {
 
   return (
     <form action={formAction} className="flex flex-col gap-5" noValidate>
-      <div className="hidden" aria-hidden>
+      <div hidden className="hidden" aria-hidden>
         <label htmlFor="company">Company</label>
         <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
       </div>
@@ -71,7 +71,6 @@ export function ContactForm() {
             <option value="">Select an option</option>
             <option>Free consultation</option>
             <option>Therapy for myself</option>
-            <option>Therapy for my teen</option>
             <option>Insurance or pricing question</option>
             <option>Something else</option>
           </select>
@@ -90,6 +89,26 @@ export function ContactForm() {
           className={cn(fieldClass, 'resize-y', errors.message && 'border-destructive')}
         />
       </Field>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="inFlorida" className="flex items-start gap-3 text-sm leading-relaxed text-foreground">
+          <input
+            id="inFlorida"
+            name="inFlorida"
+            type="checkbox"
+            required
+            aria-invalid={Boolean(errors.location)}
+            aria-describedby={errors.location ? 'inFlorida-error' : undefined}
+            className="mt-0.5 size-5 shrink-0 rounded accent-primary"
+          />
+          I will be located in Florida during my sessions.
+        </label>
+        {errors.location && (
+          <p id="inFlorida-error" className="text-sm text-destructive">
+            {errors.location}
+          </p>
+        )}
+      </div>
 
       <p className="text-xs leading-relaxed text-muted-foreground">
         Please avoid sharing sensitive health details here. This form is not monitored for emergencies.

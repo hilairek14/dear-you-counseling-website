@@ -3,6 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
+import { ogImage } from '@/lib/seo'
+import { site, siteUrl } from '@/lib/site'
 import './globals.css'
 
 const cormorant = Cormorant_Garamond({
@@ -16,13 +18,31 @@ const dmSans = DM_Sans({
   variable: '--font-dm-sans',
 })
 
+const defaultTitle = 'Online Therapy in Florida | Dear You Counseling'
+const defaultDescription =
+  'Culturally sensitive, faith-informed online therapy for adults in Florida. Support for anxiety, trauma, depression, and life transitions. Free consult.'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: 'Dear You Counseling | Sara Antoine, RCSWI',
+    default: defaultTitle,
     template: '%s | Dear You Counseling',
   },
-  description:
-    'Culturally sensitive, faith-informed therapy for teens, young adults, and adults. Specializing in anxiety, depression, trauma, life transitions, and relationship challenges.',
+  description: defaultDescription,
+  openGraph: {
+    title: defaultTitle,
+    description: defaultDescription,
+    siteName: site.name,
+    locale: 'en_US',
+    type: 'website',
+    images: [ogImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: defaultTitle,
+    description: defaultDescription,
+    images: [ogImage.url],
+  },
   icons: {
     icon: [
       { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
@@ -38,6 +58,24 @@ export const viewport: Viewport = {
   themeColor: '#f3f6f2',
 }
 
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: site.name,
+  url: siteUrl,
+  image: `${siteUrl}${ogImage.url}`,
+  description: defaultDescription,
+  areaServed: { '@type': 'State', name: 'Florida' },
+  priceRange: '$120-$150',
+  knowsAbout: ['Anxiety', 'Depression', 'Trauma', 'Life transitions', 'Relationship challenges', 'Faith-informed therapy'],
+  employee: {
+    '@type': 'Person',
+    name: site.therapist,
+    jobTitle: site.credential,
+  },
+  sameAs: [site.psychologyTodayUrl],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -46,6 +84,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
       <body className="min-h-screen antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}
+        />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
