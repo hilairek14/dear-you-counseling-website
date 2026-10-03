@@ -1,23 +1,30 @@
-import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Check, ShieldCheck } from 'lucide-react'
 import { GlassLink } from '@/components/glass-button'
 import { PageIntro } from '@/components/page-intro'
+import { pageMetadata } from '@/lib/seo'
 import { insurances, sessionRates } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
-export const metadata: Metadata = {
-  title: 'Pricing & Insurance',
-  description: 'Session rates and accepted insurance plans at Dear You Counseling.',
-}
+export const metadata = pageMetadata({
+  title: 'Therapy Rates & Insurance in Florida | Dear You Counseling',
+  description:
+    'Session rates, accepted insurance plans, and self-pay options for online therapy with Dear You Counseling in Florida.',
+  path: '/pricing',
+})
 
 export default function PricingPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Pricing"
-        title="Rates & insurance"
+        eyebrow="Rates & Insurance"
+        title="Therapy rates & insurance"
         description="Clear, upfront pricing so you can focus on what matters most: your wellbeing."
       />
+
+      <p className="mx-auto -mt-6 mb-12 max-w-2xl px-6 text-center font-medium text-foreground">
+        All sessions are offered through secure telehealth for clients located in Florida.
+      </p>
 
       <section className="mx-auto max-w-6xl px-6" aria-labelledby="rates-heading">
         <h2 id="rates-heading" className="sr-only">
@@ -103,6 +110,18 @@ export default function PricingPage() {
           </p>
         </div>
       </section>
+
+      <p className="mx-auto mt-12 max-w-3xl px-6 text-center leading-relaxed text-muted-foreground">
+        Curious what to expect from online sessions? Learn more about my{' '}
+        <Link href="/services" className="font-medium text-primary underline underline-offset-4">
+          online therapy services
+        </Link>{' '}
+        or{' '}
+        <Link href="/contact" className="font-medium text-primary underline underline-offset-4">
+          schedule a free consultation
+        </Link>
+        .
+      </p>
     </>
   )
 }

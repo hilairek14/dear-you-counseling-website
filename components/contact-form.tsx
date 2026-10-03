@@ -71,7 +71,6 @@ export function ContactForm() {
             <option value="">Select an option</option>
             <option>Free consultation</option>
             <option>Therapy for myself</option>
-            <option>Therapy for my teen</option>
             <option>Insurance or pricing question</option>
             <option>Something else</option>
           </select>
@@ -90,6 +89,26 @@ export function ContactForm() {
           className={cn(fieldClass, 'resize-y', errors.message && 'border-destructive')}
         />
       </Field>
+
+      <div className="flex flex-col gap-2">
+        <label className="flex items-start gap-3 text-sm leading-relaxed text-foreground">
+          <input
+            id="florida"
+            name="florida"
+            type="checkbox"
+            required
+            aria-invalid={Boolean(errors.florida)}
+            aria-describedby={errors.florida ? 'florida-error' : undefined}
+            className="mt-1 size-4 shrink-0 accent-primary"
+          />
+          <span>I will be located in Florida during my sessions.</span>
+        </label>
+        {errors.florida && (
+          <p id="florida-error" className="text-sm text-destructive">
+            {errors.florida}
+          </p>
+        )}
+      </div>
 
       <p className="text-xs leading-relaxed text-muted-foreground">
         Please avoid sharing sensitive health details here. This form is not monitored for emergencies.

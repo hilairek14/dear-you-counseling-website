@@ -1,16 +1,17 @@
-import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Award, BadgeCheck, ExternalLink, GraduationCap, HeartHandshake } from 'lucide-react'
 import { FloridaBadge, UniversityBadge } from '@/components/credential-badges'
 import { GlassLink } from '@/components/glass-button'
 import { PageIntro } from '@/components/page-intro'
+import { pageMetadata } from '@/lib/seo'
 import { site } from '@/lib/site'
 
-export const metadata: Metadata = {
-  title: 'About Sara Antoine',
+export const metadata = pageMetadata({
+  title: 'About Sara Antoine, RCSWI | Online Therapist in Florida',
   description:
-    'Meet Sara Antoine, a pre-licensed Registered Clinical Social Work Intern (RCSWI). Educated at the University of South Florida and Florida Atlantic University.',
-}
+    'Meet Sara Antoine, a pre-licensed Registered Clinical Social Work Intern offering culturally sensitive, faith-informed online therapy in Florida.',
+  path: '/about',
+})
 
 const credentials = [
   {
@@ -46,15 +47,15 @@ export default function AboutPage() {
       <PageIntro
         eyebrow="About"
         title="Hi, I'm Sara Antoine."
-        description="I am a pre-licensed Registered Clinical Social Work Intern (RCSWI) and the founder of Dear You Counseling, a practice built on the belief that every person deserves to feel seen, understood, and cared for."
+        description="I am a pre-licensed Registered Clinical Social Work Intern (RCSWI) and the founder of Dear You Counseling, offering culturally sensitive, faith-informed online therapy to clients across Florida. My practice is built on the belief that every person deserves to feel seen, understood, and cared for."
       />
 
       <section className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col gap-12 md:flex-row md:items-start">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] md:sticky md:top-28 md:w-5/12">
             <Image
-              src="/images/office.png"
-              alt="The welcoming Dear You Counseling office"
+              src="/images/tea-and-laptop-by-warm-lamp.jpg"
+              alt="A cup of tea on a saucer beside a warm lamp and an open laptop on a table"
               fill
               sizes="(min-width: 768px) 40vw, 100vw"
               className="object-cover"
@@ -64,9 +65,9 @@ export default function AboutPage() {
           <div className="flex flex-col gap-10 md:w-7/12">
             <div className="flex flex-col gap-5 text-lg leading-relaxed text-muted-foreground">
               <p>
-                My practice focuses on culturally sensitive, faith-informed therapy for adults. I know that our
-                cultures, families, and beliefs shape the way we experience the world, and I bring that
-                understanding into every session.
+                My practice is fully online and focuses on culturally sensitive, faith-informed therapy for adults
+                across Florida. I know that our cultures, families, and beliefs shape the way we experience the
+                world, and I bring that understanding into every session.
               </p>
               <p>
                 I specialize in anxiety, depression, trauma, life transitions, and relationship challenges. My
@@ -131,6 +132,7 @@ export default function AboutPage() {
                 Work with Sara
               </GlassLink>
               <GlassLink href="/services">View services</GlassLink>
+              <GlassLink href="/pricing">Rates &amp; Insurance</GlassLink>
             </div>
           </div>
         </div>

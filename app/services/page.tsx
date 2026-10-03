@@ -1,13 +1,16 @@
-import type { Metadata } from 'next'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { GlassLink } from '@/components/glass-button'
 import { PageIntro } from '@/components/page-intro'
+import { pageMetadata } from '@/lib/seo'
 import { approaches, populations, specialties } from '@/lib/site'
 
-export const metadata: Metadata = {
-  title: 'Services',
+export const metadata = pageMetadata({
+  title: 'Online Therapy Services in Florida | Dear You Counseling',
   description:
-    'Therapy for anxiety, depression, trauma, life transitions, and relationship challenges using CBT, strengths-based therapy, and trauma-informed care.',
-}
+    'Online therapy for anxiety, depression, trauma, life transitions, and relationship challenges for adults across Florida.',
+  path: '/services',
+})
 
 export default function ServicesPage() {
   return (
@@ -15,7 +18,7 @@ export default function ServicesPage() {
       <PageIntro
         eyebrow="Services"
         title="Care tailored to you"
-        description="Culturally sensitive, faith-informed therapy that meets you where you are. Each approach is tailored to your unique pace and needs."
+        description="Culturally sensitive, faith-informed online therapy for adults across Florida that meets you where you are. Each approach is tailored to your unique pace and needs."
       />
 
       <section className="mx-auto max-w-6xl px-6" aria-labelledby="who-heading">
@@ -37,16 +40,38 @@ export default function ServicesPage() {
           Areas of specialty
         </h2>
         <ul className="mt-8 flex flex-col divide-y divide-border border-y border-border">
-          {specialties.map((item) => (
-            <li
-              key={item.title}
-              id={item.slug}
-              className="flex scroll-mt-28 flex-col gap-2 py-7 md:flex-row md:gap-12"
-            >
-              <h3 className="font-serif text-2xl font-medium md:w-80">{item.title}</h3>
-              <p className="flex-1 leading-relaxed text-muted-foreground">{item.description}</p>
-            </li>
-          ))}
+          {specialties.map((item) => {
+            const hasPage = !item.href.includes('#')
+            return (
+              <li
+                key={item.title}
+                id={item.slug}
+                className="flex scroll-mt-28 flex-col gap-2 py-7 md:flex-row md:gap-12"
+              >
+                <h3 className="font-serif text-2xl font-medium md:w-80">
+                  {hasPage ? (
+                    <Link href={item.href} className="hover:text-primary">
+                      {item.title}
+                    </Link>
+                  ) : (
+                    item.title
+                  )}
+                </h3>
+                <div className="flex-1">
+                  <p className="leading-relaxed text-muted-foreground">{item.description}</p>
+                  {hasPage && (
+                    <Link
+                      href={item.href}
+                      className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                    >
+                      Learn about online therapy for {item.title.toLowerCase()}
+                      <ArrowRight className="size-4" aria-hidden />
+                    </Link>
+                  )}
+                </div>
+              </li>
+            )
+          })}
         </ul>
       </section>
 
@@ -90,6 +115,13 @@ export default function ServicesPage() {
               strength and meaning. For those who prefer not to, sessions remain fully secular. You always
               decide.
             </p>
+            <Link
+              href="/faith-informed-therapy"
+              className="inline-flex items-center gap-2 font-medium text-primary hover:underline"
+            >
+              Learn about faith-informed online therapy
+              <ArrowRight className="size-4" aria-hidden />
+            </Link>
           </div>
         </div>
       </section>
@@ -101,8 +133,9 @@ export default function ServicesPage() {
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <GlassLink href="/contact" variant="tinted">
-            Get in touch
+            Schedule a free consultation
           </GlassLink>
+          <GlassLink href="/pricing">Rates &amp; Insurance</GlassLink>
         </div>
       </section>
     </>

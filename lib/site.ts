@@ -1,8 +1,15 @@
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dear-you-counseling-website.vercel.app').replace(
+  /\/$/,
+  '',
+)
+
 export const site = {
   name: 'Dear You Counseling',
   therapist: 'Sara Antoine',
   credential: 'Registered Clinical Social Work Intern (RCSWI)',
-  tagline: 'Culturally sensitive, faith-informed therapy for adults.',
+  tagline: 'Culturally sensitive, faith-informed online therapy for adults in Florida.',
+  telehealthLine: 'Providing secure online therapy to clients located anywhere in Florida.',
+  videoLine: 'Sessions are held by secure video for clients located in Florida.',
   psychologyTodayUrl: 'https://www.psychologytoday.com/us/therapists/sara-antoine-wesley-chapel-fl/1562065',
 }
 
@@ -10,37 +17,42 @@ export const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
-  { href: '/pricing', label: 'Pricing' },
+  { href: '/pricing', label: 'Rates & Insurance' },
   { href: '/contact', label: 'Contact' },
 ]
 
 export const specialties = [
   {
     slug: 'anxiety',
+    href: '/anxiety-therapy',
     title: 'Anxiety',
     description:
       'Quiet the racing thoughts and constant worry. Together we build practical tools to help you feel grounded and more at ease in your everyday life.',
   },
   {
     slug: 'depression',
+    href: '/depression-therapy',
     title: 'Depression',
     description:
       'When everything feels heavy, you do not have to carry it alone. We gently work toward renewed energy, hope, and a sense of meaning.',
   },
   {
     slug: 'trauma',
+    href: '/trauma-therapy',
     title: 'Trauma',
     description:
       'Healing happens at your pace. With trauma-informed care, we create a safe space to process painful experiences and restore a sense of safety.',
   },
   {
     slug: 'life-transitions',
+    href: '/life-transitions',
     title: 'Life Transitions',
     description:
       'College, new careers, relocation, loss, or becoming a parent. Navigate seasons of change with clarity, resilience, and support.',
   },
   {
     slug: 'relationship-challenges',
+    href: '/services#relationship-challenges',
     title: 'Relationship Challenges',
     description:
       'Explore patterns in family, friendships, and romantic relationships so you can communicate openly, set healthy boundaries, and connect more deeply.',
@@ -84,7 +96,7 @@ export const sessionRates = [
     name: 'Initial Consultation',
     duration: '15 minutes',
     price: 'Free',
-    description: 'A brief phone call to see if we are a good fit and answer any questions.',
+    description: 'A brief phone or video call to see if we are a good fit and answer any questions.',
   },
   {
     name: 'Intake Assessment',
@@ -101,13 +113,4 @@ export const sessionRates = [
   },
 ]
 
-export const insurances = [
-  'Aetna',
-  'Florida Blue (BCBS)',
-  'Cigna',
-  'UnitedHealthcare',
-  'Optum',
-  'Oscar',
-  'Ambetter',
-  'Humana',
-]
+export const insurances = ['Aetna', 'Cigna']

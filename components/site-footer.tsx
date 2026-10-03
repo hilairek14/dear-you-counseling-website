@@ -10,6 +10,7 @@ export function SiteFooter() {
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             {site.therapist}, {site.credential}. {site.tagline}
           </p>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{site.telehealthLine}</p>
         </div>
 
         <nav aria-label="Footer">
